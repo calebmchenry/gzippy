@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script >
+async function get(name) {
+  const begin = Date.now();
+  const res = await fetch(`http://localhost:8000${name}`);
+  const data = await res.json();
+  console.log(`name: ${Date.now() - begin + 'ms'}`);
+}
+
+async function main() {
+  await get('/gzip/20MB') 
+  await get('/gzip/10MB') 
+  await get('/raw/20MB') 
+  await get('/raw/10MB') 
+}
+main();
+</script>
+
+
+</body>
+</html>
